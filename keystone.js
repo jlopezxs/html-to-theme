@@ -4,10 +4,6 @@ require('dotenv').load();
 
 // Require keystone
 var keystone = require('keystone');
-var swig = require('swig');
-
-// Disable swig's bulit-in template caching, express handles it
-swig.setDefaults({ cache: false });
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -18,13 +14,11 @@ keystone.init({
 	'name': 'HTML to Theme',
 	'brand': 'HTML to Theme',
 	
-	'less': 'public',
+	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
-	'view engine': 'swig',
-	
-	'custom engine': swig.renderFile,
+	'view engine': 'jade',
 	
 	'auto update': true,
 	'session': true,

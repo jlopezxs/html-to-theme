@@ -1,0 +1,8 @@
+extends ../layouts/default
+
+block content
+	.container: .jumbotron
+		select.form-control
+			if platforms
+				each platform, index in platforms
+					option(value=platform.id)=platform.name
