@@ -10,7 +10,7 @@ exports = module.exports = function(req, res) {
 		if (err) throw err;
 
 		tagsFile = {
-			content:data
+			content:data.replace(/\n/g,'')
 		};
 
 		console.log(tagsFile);
