@@ -6,3 +6,8 @@ block content
 			if platforms
 				each platform, index in platforms
 					option(value=platform.id)=platform.name
+	.container: .jumbotron
+		form(action="/filesent", method="POST", enctype="multipart/form-data")
+			input.form-control(type="file",name="file")
+			br
+			input.form-control(type="submit")

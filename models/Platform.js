@@ -12,7 +12,7 @@ Platform.add({
 	name: { type: String, required: true, index: true },
 	createdAt: { type: Date, default: Date.now },
 	state: { type: Types.Select, options: 'draft, published', default: 'draft', index: true },
-  version: { type: Types.Number}
+  	version: { type: Types.Number}
 });
 
 /**
