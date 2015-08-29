@@ -2,12 +2,12 @@ extends ../layouts/default
 
 block content
 	.container: .jumbotron
-		select.form-control
-			if platforms
-				each platform, index in platforms
-					option(value=platform.id)=platform.name
-	.container: .jumbotron
 		form(action="/filesent", method="POST", enctype="multipart/form-data")
-			input.form-control(type="file",name="file")
+			select(name="platform").form-control
+				if platforms
+					each platform, index in platforms
+						option(value=platform.id)=platform.name
 			br
-			input.form-control(type="submit")
+			input(type="file",name="file").form-control
+			br
+			input(type="submit").form-control

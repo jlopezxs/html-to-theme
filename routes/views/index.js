@@ -9,7 +9,6 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 		Platform.model.find()
 			.exec(function(err, data) {
-				console.log(data);
 				locals.platforms = data;
 				next();
 			});

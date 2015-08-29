@@ -1,20 +1,41 @@
 var fs = require('fs'),
-	tagsFile;
+    keystone = require('keystone'),
+    ReplaceTag = keystone.list('ReplaceTag'),
+    cheerio = require('cheerio');
 
 exports = module.exports = function(req, res) {
-	// Path of the uploaded file
-	var filePath = req.files.file.path;
 
-	// Reading the uploaded file
-	fs.readFile(filePath, 'utf-8', function(err, data) {
-		if (err) throw err;
+    var filePath = req.files.file.path,
+        platform = req.body.platform,
+        html;
 
-		tagsFile = {
-			content:data.replace(/\n/g,'')
-		};
+    fs.readFile(filePath, 'utf-8', function(err, data) {
+        if (err) throw err;
 
-		console.log(tagsFile);
-	});
+        html = data.replace(/\n/g, '');
 
-	res.redirect('/');
+        var $ = cheerio.load(html);
+
+        ReplaceTag.model.find()
+            .where('platform', platform)
+            .exec(function(err, tags) {
+                var DATA = 'data-value';
+
+                if (tags.length > 0) {
+                    tags.forEach(function(element) {
+                        var tagName = DATA + '="' + element.tag + '"';
+                        $('[' + tagName + ']').filter(function() {
+                            var $tagElement = $(this);
+                            $tagElement.html(element.replace);
+                        });
+                        html = $.html();
+                        console.log(html);
+                    });
+                } else {
+                    console.log('EMPTY!');
+                }
+            });
+    });
+
+    res.redirect('/');
 };
