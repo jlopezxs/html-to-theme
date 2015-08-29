@@ -12,7 +12,6 @@ BlockTag.add({
 	name: { type: String, required: true, index: true },
 	platform: { type: Types.Relationship, ref: 'Platform'},
 	startTag: { type: Types.Html, index: true, default: '' },
-	endTag: { type: Types.Html, index: true, default: '' },
   	fileSource: { type: Types.Html, index: true, default: '' },
 	createdAt: { type: Date, default: Date.now }
 });
@@ -21,5 +20,5 @@ BlockTag.add({
  * Registration	
  */
 
-BlockTag.defaultColumns = 'platform, startTag, endTag, fileSource';
+BlockTag.defaultColumns = 'platform, startTag, fileSource';
 BlockTag.register();
