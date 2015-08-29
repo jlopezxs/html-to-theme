@@ -9,10 +9,10 @@ var Types = keystone.Field.Types;
 var ReplaceTag = new keystone.List('ReplaceTag');
 
 ReplaceTag.add({
-  name: { type: String, required: true, index: true },
-  platform: { type: Types.Relationship, ref: 'Platform'},
+	name: { type: String, required: true, index: true },
+	platform: { type: Types.Relationship, ref: 'Platform'},
 	tag: { type: Types.Html, index: true, default: '' },
-  replace: { type: Types.Html, index: true, default: '' },
+	replace: { type: Types.Html, index: true, default: '' },
 	createdAt: { type: Date, default: Date.now }
 });
 

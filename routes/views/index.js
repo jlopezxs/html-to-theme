@@ -1,5 +1,5 @@
 var keystone = require('keystone'),
-	Platform = keystone.list('Platform');
+	Platform = keystone.list('Platform');	
 
 exports = module.exports = function(req, res) {
 
@@ -14,6 +14,7 @@ exports = module.exports = function(req, res) {
 				next();
 			});
 	});
+	
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'home';
