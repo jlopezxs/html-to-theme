@@ -26,13 +26,12 @@ exports = module.exports = function(req, res) {
     };
 
     var replaceTags = function(html, tags) {
-        var $ = cheerio.load(html);
-        var DATA = '[data-value="{tag}"]';
-        var DATA_ATTR = 'tag';
-        var tagSelector;
-
-
         if (tags.length > 0) {
+            var $ = cheerio.load(html);
+            var DATA = '[data-value="{tag}"]';
+            var DATA_ATTR = 'tag';
+            var tagSelector;
+
             tags.forEach(function(element) {
                 tagSelector = generateDataAttr(DATA, DATA_ATTR, element.tag);
 
